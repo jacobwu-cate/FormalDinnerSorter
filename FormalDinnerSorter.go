@@ -71,13 +71,19 @@ func main() {
 	fmt.Print("\n\n", tables)
 	
 	file, err := os.Create("result.csv")
+	if err != nil {
+		log.Fatal("Error returned from filepath.Walk:", err)
+	}
 	defer file.Close()
 
 	writer := csv.NewWriter(file)
 	defer writer.Flush()
 
 	for _, value := range tables {
-		err := writer.Write(value)
+		err := writer.Write(value[:])
+		if err != nil {
+			log.Fatal("Error returned from filepath.Walk:", err)
+		}
 	}
 }
  
