@@ -42,7 +42,8 @@ var ( // Global variables
   printDetailsForDebug = false
   tables [50]table
   staffList []person
-  staffNames []string
+  kitchenNames []string
+  waiterNames []string
   data [][]string
 )
 
@@ -74,7 +75,11 @@ func drawStaff(n int, role string) {
 	sort.Sort(ByTimesServed(people)) // Sort by how many times on Kitchen/Waiter
 	for i := 1;  i<=n; i++ {
     staffList = append(staffList, people[0])
-    staffNames = append(staffNames, people[0].name)
+    if role == "Kitchen" {
+      kitchenNames = append(kitchenNames, people[0].name)
+    } else {
+      waiterNames = append(waiterNames, people[0].name)
+    }
     fmt.Println(role + " <- " + people[0].name)
     people = append(people, people[0]) // Moves first person to last, since he's been assigned role
     people = append(people[:0], people[1:]...)
@@ -129,7 +134,8 @@ func contains(array []int, key int) bool {
 
 func writeStaffNames() {
   data = append(data, make([]string, 0))
-  data = append(data, staffNames)
+  data = append(data, kitchenNames)
+  data = append(data, waiterNames)
 }
 
 func exportCSV() {
