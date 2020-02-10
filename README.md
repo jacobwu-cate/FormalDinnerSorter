@@ -3,7 +3,7 @@
 I can sort tables for you!
 
 # Important Notice
-A revision is underway, based on the following algorithm:
+A revision is completed, based on the following algorithm:
 
 1. Get list of names
 2. Generate tables
@@ -15,7 +15,7 @@ A revision is underway, based on the following algorithm:
 	
 	c. If can’t fit without expanding table — append name to last
 	
-	d. Last 54 names = staff
+	d. Last 38 names = staff
 
 You can always view the latest progress here:
 
